@@ -34,7 +34,7 @@ describe Less::Loader do
     process = Less::Loader::Process
 
     it 'should not raise an error' do
-      process.any_instance.should_receive(:warn) do |msg|
+      process.any_instance.should_receive(:warn) do |process, msg|
         msg.should match(/JS process\.exit\(-2\)/)
       end
       subject.environment.runtime.eval("process.exit(-2);")
